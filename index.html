@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solución del Parcial de Álgebra Lineal</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-left: 5px solid #3498db;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 20px;
+        }
+        .matriz {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+        .ecuacion {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+        }
+        .resultado {
+            background-color: #d4edda;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #c3e6cb;
+            font-weight: bold;
+        }
+        .paso {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #ffeaa7;
+        }
+        .respuesta {
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #f5c6cb;
+            font-weight: bold;
+        }
+        ul {
+            margin: 10px 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .fraccion {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .numerador {
+            border-bottom: 1px solid black;
+            padding: 0 5px;
+        }
+        .denominador {
+            padding: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Solución del Parcial de Álgebra Lineal</h1>
+
+        <h2>Pregunta 1</h2>
+        <p><strong>Dada la transformación lineal T: ℝ³ → ℝ³ definida como:</strong></p>
+        
+        <div class="ecuacion">
+            T([x, y, z]) = [2x - 5y + 9z, -3x + 2y - 8z, 4x - 3y + 11z]
+        </div>
+
+        <h3>a) Hallar la matriz de transformación A_T en la base estándar de ℝ³ (2 puntos)</h3>
+        
+        <p>Para encontrar la matriz de transformación, aplicamos T a cada vector de la base estándar:</p>
+        
+        <div class="paso">
+            <strong>Base estándar de ℝ³:</strong><br>
+            e₁ = [1, 0, 0], e₂ = [0, 1, 0], e₃ = [0, 0, 1]
+        </div>
+
+        <div class="paso">
+            <strong>Aplicando T:</strong><br>
+            • T(e₁) = T([1, 0, 0]) = [2, -3, 4]<br>
+            • T(e₂) = T([0, 1, 0]) = [-5, 2, -3]<br>
+            • T(e₃) = T([0, 0, 1]) = [9, -8, 11]
+        </div>
+
+        <div class="resultado">
+            <strong>Matriz de transformación:</strong><br>
+            <div class="matriz">
+                A_T = <br>
+                [ 2  -5   9]<br>
+                [-3   2  -8]<br>
+                [ 4  -3  11]
+            </div>
+        </div>
+
+        <h3>b) Hallar el espacio fila, espacio columna y núcleo con sus dimensiones (3 puntos)</h3>
+
+        <div class="paso">
+            <strong>Espacio fila:</strong><br>
+            Aplicando operaciones elementales por filas obtenemos la forma escalonada:
+            <div class="matriz">
+                [ 2  -5   9]<br>
+                [ 0 -5.5 5.5]<br>
+                [ 0   0   0]
+            </div>
+        </div>
+
+        <div class="resultado">
+            <strong>Resultados:</strong><br>
+            • <strong>Espacio fila:</strong> Span{(2, -5, 9), (0, -1, 1)}<br>
+            • <strong>Dimensión del espacio fila:</strong> 2<br><br>
+            
+            • <strong>Espacio columna:</strong> Span{[2, -3, 4], [-5, 2, -3]}<br>
+            • <strong>Dimensión del espacio columna:</strong> 2<br><br>
+            
+            • <strong>Núcleo:</strong> Span{[-2, 1, 1]}<br>
+            • <strong>Dimensión del núcleo:</strong> 1
+        </div>
+
+        <h2>Pregunta 2</h2>
+        <p><strong>Dado el conjunto de vectores {v₁, v₂, v₃} = {(1, 0, 1), (-1, 1, -1), (2, 4, 0)}</strong></p>
+
+        <h3>a) Verificar si el conjunto es una base de ℝ³ (1 punto)</h3>
+
+        <div class="paso">
+            <strong>Matriz con vectores como columnas:</strong>
+            <div class="matriz">
+                A = <br>
+                [ 1 -1  2]<br>
+                [ 0  1  4]<br>
+                [ 1 -1  0]
+            </div>
+        </div>
+
+        <div class="paso">
+            <strong>Cálculo del determinante:</strong><br>
+            det(A) = 1×1×0 + (-1)×4×1 + 2×0×(-1) - 2×1×1 - 1×4×(-1) - 0×0×(-1)<br>
+            det(A) = 0 - 4 + 0 - 2 + 4 + 0 = -2
+        </div>
+
+        <div class="resultado">
+            Como det(A) = -2 ≠ 0, los vectores son linealmente independientes y forman una <strong>base de ℝ³</strong>.
+        </div>
+
+        <h3>b) Fórmulas del proceso de Gram-Schmidt (2 puntos)</h3>
+
+        <div class="ecuacion">
+            <strong>Proceso de ortogonalización de Gram-Schmidt:</strong><br><br>
+            1. u₁ = v₁<br><br>
+            2. u₂ = v₂ - proj_u₁(v₂)<br>
+            &nbsp;&nbsp;&nbsp;donde proj_u₁(v₂) = [⟨v₂,u₁⟩/⟨u₁,u₁⟩] × u₁<br><br>
+            3. u₃ = v₃ - proj_u₁(v₃) - proj_u₂(v₃)<br><br>
+            4. Normalización:<br>
+            &nbsp;&nbsp;&nbsp;e₁ = u₁/||u₁||, e₂ = u₂/||u₂||, e₃ = u₃/||u₃||
+        </div>
+
+        <h3>c) Calcular el conjunto de vectores ortonormales (3 puntos)</h3>
+
+        <div class="paso">
+            <strong>Paso 1:</strong> u₁ = v₁ = (1, 0, 1)<br><br>
+            <strong>Paso 2:</strong> Calculamos u₂<br>
+            • ⟨v₂, u₁⟩ = (-1)×1 + 1×0 + (-1)×1 = -2<br>
+            • ⟨u₁, u₁⟩ = 1² + 0² + 1² = 2<br>
+            • proj_u₁(v₂) = (-2/2)(1, 0, 1) = (-1, 0, -1)<br>
+            • u₂ = (-1, 1, -1) - (-1, 0, -1) = (0, 1, 0)<br><br>
+            
+            <strong>Paso 3:</strong> Calculamos u₃<br>
+            • ⟨v₃, u₁⟩ = 2×1 + 4×0 + 0×1 = 2<br>
+            • ⟨v₃, u₂⟩ = 2×0 + 4×1 + 0×0 = 4<br>
+            • proj_u₁(v₃) = (2/2)(1, 0, 1) = (1, 0, 1)<br>
+            • proj_u₂(v₃) = (4/1)(0, 1, 0) = (0, 4, 0)<br>
+            • u₃ = (2, 4, 0) - (1, 0, 1) - (0, 4, 0) = (1, 0, -1)
+        </div>
+
+        <div class="paso">
+            <strong>Paso 4:</strong> Normalización<br>
+            • ||u₁|| = √2 → e₁ = (1/√2, 0, 1/√2)<br>
+            • ||u₂|| = 1 → e₂ = (0, 1, 0)<br>
+            • ||u₃|| = √2 → e₃ = (1/√2, 0, -1/√2)
+        </div>
+
+        <div class="resultado">
+            <strong>Conjunto ortonormal:</strong><br>
+            {(1/√2, 0, 1/√2), (0, 1, 0), (1/√2, 0, -1/√2)}
+        </div>
+
+        <h2>Pregunta 3</h2>
+        <p><strong>Sabiendo que T(1,1) = (0,5) y T(-1,2) = (-3,1), encontrar T: ℝ² → ℝ² (6 puntos)</strong></p>
+
+        <div class="paso">
+            Buscamos una matriz de la forma:<br>
+            <div class="matriz">
+                [a  b][x] = T([x])<br>
+                [c  d][y]     [y]
+            </div>
+        </div>
+
+        <div class="paso">
+            <strong>De T(1,1) = (0,5):</strong><br>
+            • a + b = 0<br>
+            • c + d = 5<br><br>
+            
+            <strong>De T(-1,2) = (-3,1):</strong><br>
+            • -a + 2b = -3<br>
+            • -c + 2d = 1
+        </div>
+
+        <div class="paso">
+            <strong>Resolviendo el sistema:</strong><br>
+            • De a + b = 0: a = -b<br>
+            • Sustituyendo en -a + 2b = -3: -(-b) + 2b = -3 → 3b = -3 → b = -1<br>
+            • Por lo tanto: a = 1<br><br>
+            
+            • De c + d = 5: c = 5 - d<br>
+            • Sustituyendo en -c + 2d = 1: -(5-d) + 2d = 1 → 3d = 6 → d = 2<br>
+            • Por lo tanto: c = 3
+        </div>
+
+        <div class="resultado">
+            <strong>Matriz de transformación:</strong><br>
+            <div class="matriz">
+                A_T = [1 -1]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3  2]
+            </div>
+            <br>
+            <strong>Transformación lineal:</strong><br>
+            T([x, y]) = [x - y, 3x + 2y]
+        </div>
+
+        <h2>Pregunta 4</h2>
+
+        <h3>i) Matriz de cambio de base (2 puntos)</h3>
+        <p><strong>Dadas las bases:</strong> B₁ = {(1,1), (2,3)} y B₂ = {(0,1), (1,-1)}</p>
+
+        <div class="paso">
+            <strong>Para v₁ = (1,1):</strong><br>
+            (1,1) = a₁₁(0,1) + a₁₂(1,-1)<br>
+            Resolviendo: a₁₂ = 1, a₁₁ = 2<br><br>
+            
+            <strong>Para v₂ = (2,3):</strong><br>
+            (2,3) = a₂₁(0,1) + a₂₂(1,-1)<br>
+            Resolviendo: a₂₂ = 2, a₂₁ = 5
+        </div>
+
+        <div class="respuesta">
+            <strong>Respuesta correcta:</strong> b) 
+            <div class="matriz">
+                [2  5]<br>
+                [1  2]
+            </div>
+        </div>
+
+        <h3>ii) Independencia lineal vs. Ortogonalidad (1 punto)</h3>
+        
+        <div class="paso">
+            <strong>Afirmación:</strong> "Si dos vectores u y v son linealmente independientes, entonces son ortogonales."<br><br>
+            
+            <strong>Análisis:</strong><br>
+            • Dos vectores son ortogonales si ⟨u, v⟩ = 0<br>
+            • Dos vectores son linealmente independientes si ninguno es múltiplo del otro<br><br>
+            
+            <strong>Contraejemplo:</strong><br>
+            • u = (1,0) y v = (1,1)<br>
+            • Son linealmente independientes (ninguno es múltiplo del otro)<br>
+            • Su producto escalar: ⟨u, v⟩ = 1×1 + 0×1 = 1 ≠ 0<br>
+            • Por lo tanto, NO son ortogonales
+        </div>
+
+        <div class="respuesta">
+            <strong>Conclusión:</strong> La afirmación es <strong>FALSA</strong>. La independencia lineal no implica ortogonalidad.<br>
+            <strong>Respuesta correcta:</strong> b) Falso
+        </div>
+    </div>
+</body>
+</html>
